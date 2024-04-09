@@ -2,8 +2,12 @@
 
 <h2> Warehouses </h2>
 <% @warehouses.each do |w| %>
-  <span> <%= w.name %> </span>
-  <span> Código: <%= w.code %> </span>
-  <span> Cidade: <%= w.city %> </span>
-  <span> <%= w.area %> m² </span>
+  <span><%= w.name %></span>
+  <span>Código: <%= w.code %></span>
+  <span>Cidade: <%= w.city %></span>
+  <span><%= w.area %> m²</span>
+<% end %>
+
+<% if @warehouses.empty? %>
+  <span>There is no registered warehouses</span>
 <% end %>

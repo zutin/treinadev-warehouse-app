@@ -20,6 +20,8 @@ describe 'User visits home page' do
     visit('/')
 
     #Assert
+    expect(page).not_to have_content('There is no registered warehouses')
+
     expect(page).to have_content('Rio')
     expect(page).to have_content('Código: SDU')
     expect(page).to have_content('Cidade: Rio de Janeiro')
@@ -31,7 +33,13 @@ describe 'User visits home page' do
     expect(page).to have_content('50000 m²')
   end
 
-  # it '' do
-    
-  # end
+  it 'can see when there is no registered warehouses' do
+    #Arrange
+
+    #Act
+    visit('/')
+
+    #Assert
+    expect(page).to have_content('There is no registered warehouses')
+  end
 end
