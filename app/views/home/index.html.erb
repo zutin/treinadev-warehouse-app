@@ -1,1 +1,9 @@
 <h1>Warehouses & Stock</h1>
+
+<h2> Warehouses </h2>
+<% @warehouses.each do |w| %>
+  <span> <%= w.name %> </span>
+  <span> Código: <%= w.code %> </span>
+  <span> Cidade: <%= w.city %> </span>
+  <span> <%= w.area %> m² </span>
+<% end %>
