@@ -23,13 +23,13 @@ describe 'User visits home page' do
     expect(page).not_to have_content('There is no registered warehouses')
 
     expect(page).to have_content('Rio')
-    expect(page).to have_content('Código: SDU')
-    expect(page).to have_content('Cidade: Rio de Janeiro')
+    expect(page).to have_content('Code: SDU')
+    expect(page).to have_content('City: Rio de Janeiro')
     expect(page).to have_content('60000 m²')
 
     expect(page).to have_content('Maceió')
-    expect(page).to have_content('Código: MCZ')
-    expect(page).to have_content('Cidade: Maceió')
+    expect(page).to have_content('Code: MCZ')
+    expect(page).to have_content('City: Maceió')
     expect(page).to have_content('50000 m²')
   end
 
