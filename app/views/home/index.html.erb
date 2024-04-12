@@ -1,7 +1,12 @@
 <h1>Warehouses & Stock</h1>
 
+
 <section id="warehouses">
   <h2> Warehouses </h2>
+    <div>
+      <%= link_to('New Warehouse', new_warehouse_path) %>
+    </div>
+    
     <% @warehouses.each do |w| %>
       <div>
         <h3><%= link_to(w.name, warehouse_path(w.id)) %></h3>
