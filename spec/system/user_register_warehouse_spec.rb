@@ -35,6 +35,7 @@ describe 'User registers a new warehouse' do
 
     #Assert
     expect(current_path).to eq root_path
+    expect(page).to have_content('Warehouse registered successfully.')
     expect(page).to have_content('Rio de Janeiro')
     expect(page).to have_content('RIO')
     expect(page).to have_content('32000 m²')
