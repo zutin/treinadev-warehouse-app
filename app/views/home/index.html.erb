@@ -1,13 +1,22 @@
 <h1>Warehouses & Stock</h1>
 
-<h2> Warehouses </h2>
-<% @warehouses.each do |w| %>
-  <%= link_to(w.name, warehouse_path(w.id)) %>
-  <span>Code: <%= w.code %></span>
-  <span>City: <%= w.city %></span>
-  <span><%= w.area %> m²</span>
-<% end %>
+<section id="warehouses">
+  <h2> Warehouses </h2>
+    <% @warehouses.each do |w| %>
+      <div>
+        <h3><%= link_to(w.name, warehouse_path(w.id)) %></h3>
+        <dl>
+          <dt>Code:</dt>
+          <dd><%= w.code %></dd>
+          <dt>City:</dt>
+          <dd><%= w.city %></dd>
+          <dt>Area:</dt>
+          <dd><%= w.area %> m²</dd>          
+        </dl>
+      </div>
+    <% end %>
 
-<% if @warehouses.empty? %>
-  <span>There is no registered warehouses</span>
-<% end %>
+  <% if @warehouses.empty? %>
+    <span>There is no registered warehouses</span>
+  <% end %>
+</section>
