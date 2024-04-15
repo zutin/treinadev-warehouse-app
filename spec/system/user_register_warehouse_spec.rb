@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'User registers a new warehouse' do
-  it 'from home page' do
+  it 'can see the registration form from home page' do
     #Arrange
 
     #Act
@@ -18,7 +18,7 @@ describe 'User registers a new warehouse' do
     expect(page).to have_field('Description')
   end
 
-  it 'with success' do
+  it 'can register a new warehouse with success' do
     #Arrange
 
     #Act
@@ -39,5 +39,20 @@ describe 'User registers a new warehouse' do
     expect(page).to have_content('Rio de Janeiro')
     expect(page).to have_content('RIO')
     expect(page).to have_content('32000 m²')
+  end
+
+  it 'cannot register a warehouse with missing data' do
+    #Arrange
+
+    #Act
+    visit root_path
+    click_on 'New Warehouse'
+    fill_in 'Warehouse Name', with: ''
+    fill_in 'Code', with: ''
+    fill_in 'Description', with: ''
+    click_on 'Create'
+
+    #Assert
+    expect(page).to have_content('You must provide all warehouse data.')
   end
 end

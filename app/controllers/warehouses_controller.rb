@@ -5,15 +5,19 @@ class WarehousesController < ApplicationController
   end
 
   def new
+    @warehouse = Warehouse.new
   end
 
   def create
     w_params = params.require(:warehouse).permit(:name, :code, :area, :city, :address, :zipcode, :description)
 
-    w = Warehouse.new(w_params)
-    w.save()
-
-    flash[:notice] = "Warehouse registered successfully."
-    redirect_to root_path
+    @warehouse = Warehouse.new(w_params)
+    
+    if @warehouse.save()
+      redirect_to root_path, notice: "Warehouse registered successfully."
+    else
+      flash.now[:notice] = "You must provide all warehouse data."
+      render 'new'
+    end
   end
 end
