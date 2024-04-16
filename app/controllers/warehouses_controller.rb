@@ -1,5 +1,5 @@
 class WarehousesController < ApplicationController
-  before_action :set_warehouse, only: [:show, :edit, :update]
+  before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
 
   def show; end
 
@@ -30,6 +30,15 @@ class WarehousesController < ApplicationController
     else
       flash.now[:notice] = "It was not possible to edit this warehouse."
       render 'edit'
+    end
+  end
+
+  def destroy
+    if @warehouse.destroy()
+      redirect_to root_path, notice: "Warehouse deleted successfully."
+    else
+      flash.now[:notice] = "It was not possible to delete this warehouse."
+      render 'show'
     end
   end
 
