@@ -1,0 +1,17 @@
+<h1>Product Models</h1>
+
+<%= @product_models.each do |pm| %>
+  <div>
+    <h2><%= pm.name %></h2>
+    <dl>
+      <dt>SKU: </dt>
+      <dd><%= pm.sku %></dd>
+      <dt>Brand: </dt>
+      <dd><%= pm.supplier.brand_name %></dd>
+    </dl>
+  </div>
+<% end %>
+
+<% if @product_models.empty? %>
+  <h2>There are no products available.</h2>
+<% end %>
