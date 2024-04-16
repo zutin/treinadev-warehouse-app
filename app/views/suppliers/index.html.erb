@@ -1,0 +1,13 @@
+<h1>Suppliers</h1>
+
+<div> <%= link_to('New supplier', new_supplier_path) %> </div>
+
+<% @suppliers.each do |s| %>
+  <%= link_to s.corporate_name, s %>
+  <%= s.brand_name %>
+  <%= s.registration_number %>
+<% end %>
+
+<% if @suppliers.empty? %>
+    <span>No supplier found.</span>
+  <% end %>
