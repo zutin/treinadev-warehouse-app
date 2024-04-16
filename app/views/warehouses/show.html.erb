@@ -1,6 +1,7 @@
 <h1><%= @warehouse.code %> Warehouse</h1>
 
 <%= link_to('Back', root_path) %>
+<%= link_to('Edit', edit_warehouse_path(@warehouse.id)) %>
 
 <h2> Information </h2>
 <%= @warehouse.name %>

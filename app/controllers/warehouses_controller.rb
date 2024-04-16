@@ -1,8 +1,7 @@
 class WarehousesController < ApplicationController
-  def show
-    id = params[:id]
-    @warehouse = Warehouse.find(id)
-  end
+  before_action :set_warehouse, only: [:show, :edit, :update]
+
+  def show; end
 
   def new
     @warehouse = Warehouse.new
@@ -19,5 +18,24 @@ class WarehousesController < ApplicationController
       flash.now[:notice] = "You must provide all warehouse data."
       render 'new'
     end
+  end
+
+  def edit; end
+
+  def update
+    w_params = params.require(:warehouse).permit(:name, :code, :area, :city, :address, :zipcode, :description)
+    
+    if @warehouse.update(w_params)
+      redirect_to warehouse_path(@warehouse.id), notice: "Warehouse edited successfully."
+    else
+      flash.now[:notice] = "It was not possible to edit this warehouse."
+      render 'edit'
+    end
+  end
+
+  private
+
+  def set_warehouse
+    @warehouse = Warehouse.find(params[:id])
   end
 end
