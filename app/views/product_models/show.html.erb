@@ -1,0 +1,9 @@
+<h1>Viewing product model</h1>
+
+<%= link_to 'Edit', root_path %>
+
+<p><%= @product_model.name %></p>
+<p>SKU: <%= @product_model.sku %></p>
+<p>Dimensions: <%= @product_model.height %>cm x <%= @product_model.width %>cm x <%= @product_model.depth %>cm
+<p>Weight: <%= @product_model.weight %></p>
+<p>Supplier: <%= @product_model.supplier.brand_name %></p>

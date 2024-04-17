@@ -1,5 +1,7 @@
 <h1>Product Models</h1>
 
+<%= link_to 'New Product Model', new_product_model_path %>
+
 <%= @product_models.each do |pm| %>
   <div>
     <h2><%= pm.name %></h2>
