@@ -12,8 +12,14 @@ class ProductModelsController < ApplicationController
     product_model_params = params.require(:product_model).permit(:name, :width, :height, :depth, :weight, :sku, :supplier_id)
     
     @product_model = ProductModel.new(product_model_params)
-    @product_model.save()
-    redirect_to @product_model, notice: 'Product model created successfully.'
+    if @product_model.save()
+      redirect_to @product_model, notice: 'Product model created successfully.'
+    else
+      flash.now[:notice] = 'Error while creating a product model.'
+
+      @suppliers = Supplier.all
+      render 'new'
+    end
   end
 
   def show
