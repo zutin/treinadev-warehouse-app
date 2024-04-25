@@ -30,7 +30,9 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
-  #Trocando navegador Google pelo rack test
+  #Warden Devise
+  config.include Warden::Test::Helpers
+  #Trocando navegador Google pelo Rake test
   config.before(type: :system) do
     driven_by(:rack_test)
   end

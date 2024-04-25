@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'User creates a product model' do
   it 'can create a new product successfully' do
     #Arrange
+    User.create!(username: 'user', email: 'user@test.com', password: 'password')
+
     supplier = Supplier.create!(corporate_name: 'Supplier Test', brand_name: 'Supplier Brand', registration_number: '999111555',
                                 full_address: 'Rua das Palmeiras, 999', city: 'São Paulo', state: 'SP', email: 'supplier@test.com')
 
@@ -10,6 +12,7 @@ describe 'User creates a product model' do
                                 full_address: 'Rua das Aves, 123', city: 'Rio de Janeiro', state: 'RJ', email: 'ele@ge.com')
 
     #Act
+    login_as(User.first)
     visit root_path
     click_on 'Product Models'
     click_on 'New Product Model'
@@ -35,10 +38,12 @@ describe 'User creates a product model' do
 
   it 'cannot create a new product model with missing data' do
     #Arrange
+    User.create!(username: 'user', email: 'user@test.com', password: 'password')
     supplier = Supplier.create!(corporate_name: 'Supplier Test', brand_name: 'Supplier Brand', registration_number: '999111555',
                                 full_address: 'Rua das Palmeiras, 999', city: 'São Paulo', state: 'SP', email: 'supplier@test.com')
 
     #Act
+    login_as(User.first)
     visit root_path
     click_on 'Product Models'
     click_on 'New Product Model'

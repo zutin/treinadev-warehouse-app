@@ -15,6 +15,7 @@
       <nav>
         <%= link_to 'Suppliers', suppliers_path %>
         <%= link_to 'Product Models', product_models_path %>
+        <%= link_to 'Registrar Pedido', new_order_path %>
         <% if user_signed_in? %>
           <span><%= current_user.email %></span>
           <%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
